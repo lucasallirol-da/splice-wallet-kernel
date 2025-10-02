@@ -239,7 +239,7 @@ export class LedgerClient {
     public async generateTopology(
         synchronizerId: string,
         publicKey: string,
-        partyHint?: PartyId,
+        partyHint: string,
         localParticipantObservationOnly: boolean = false,
         confirmationThreshold: number = 1,
         otherConfirmingParticipantUids: string[] = []
@@ -256,7 +256,7 @@ export class LedgerClient {
 
         const body = {
             synchronizer: synchronizerId,
-            partyHint: partyHint || publicKey.slice(0, 5),
+            partyHint,
             publicKey: {
                 format: 'CRYPTO_KEY_FORMAT_RAW',
                 keyData: publicKey,
